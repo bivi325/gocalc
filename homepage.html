@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <style>
+      body {
+        margin: 5vh 3vw;
+      }
+      .card {
+        margin: 1vh 1vw;
+        width: 25vw;
+        box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3),
+          0 15px 12px rgba(0, 0, 0, 0.22);
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      }
+      .card:hover {
+        box-shadow: 0 38px 72px rgba(0, 0, 0, 0.25),
+          0 30px 24px rgba(0, 0, 0, 0.22);
+      }
+
+      .grid-container {
+        display: grid;
+        grid-template-columns: 15vw 10vw;
+        grid-template-rows: auto;
+
+        background-color: coral;
+      }
+      .grid-elem {
+        margin: 0.5vh 0.5vw;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 500;
+      }
+      .result {
+        grid-column-start: 1;
+        grid-column-end: 3;
+      }
+      .grid-elem-button {
+        border: 0;
+        padding: 0;
+        margin: 0.5vh 0.5vw;
+        height: 5vh;
+        background-color: crimson;
+        grid-column-start: 1;
+        grid-column-end: 3;
+      }
+    </style>
+  </head>
+  <body>
+    <form class="card" action="/calc" method="get" onsubmit=handler>
+      <div class="grid-container">
+        <label class="grid-elem" for="a">First number</label>
+        <input class="grid-elem" name="a" id="a" value="0" />
+      </div>
+      <div class="grid-container">
+        <label class="grid-elem" for="operator">Operator</label>
+        <select class="grid-elem" name="operator" id="operator">
+          <option value="plus">+</option>
+          <option value="minus">-</option>
+          <option value="multiply">*</option>
+          <option value="divide">/</option>
+        </select>
+      </div>
+      <div class="grid-container">
+        <label class="grid-elem" for="b">Second Number</label>
+        <input class="grid-elem" name="b" id="b" value="0" />
+      </div>
+      <div class="grid-container">
+        <button type="submit" class="grid-elem-button">Calc</button>
+      </div>
+    </form>
+    <div class="card">
+      <div class="grid-container">
+          <div class="result grid-elem">{{.Result}}</div>
+      </div>
+  </body>
+</html>
